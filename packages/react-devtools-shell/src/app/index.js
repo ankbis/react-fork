@@ -10,6 +10,7 @@ import {createRoot} from 'react-dom/client';
 import DeeplyNestedComponents from './DeeplyNestedComponents';
 import Iframe from './Iframe';
 import EditableProps from './EditableProps';
+import Calculator from './Calculator';
 import ElementTypes from './ElementTypes';
 import Hydration from './Hydration';
 import InspectableElements from './InspectableElements';
@@ -97,6 +98,7 @@ function mountTestApp() {
   mountApp(ElementTypes);
   mountApp(EditableProps);
   mountApp(ReactNativeWeb);
+  mountApp(Calculator);
   mountApp(Toggle);
   mountApp(ErrorBoundaries);
   mountApp(SuspenseTree);
