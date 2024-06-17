@@ -24,6 +24,7 @@ import invariant from "invariant";
 import path from "path";
 import prettier from "prettier";
 import SproutTodoFilter from "./SproutTodoFilter";
+import { parseJSON } from "../json-parser/src";
 import { isExpectError } from "./fixture-utils";
 export function parseLanguage(source: string): "flow" | "typescript" {
   return source.indexOf("@flow") !== -1 ? "flow" : "typescript";
@@ -134,6 +135,9 @@ function makePluginOptions(
   }
 
   const config = parseConfigPragmaFn(firstLine);
+  if (firstLine.includes("@parseJSON")) {
+    config.customHooks.set("parseJSON", { valueKind: "frozen", effectKind: "freeze", transitiveMixedData: false, noAlias: true });
+  }
   return {
     environment: {
       ...config,
